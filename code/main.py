@@ -3,8 +3,8 @@ import logging
 import coloredlogs
 
 from Coach import Coach
-from TSP.TSPGame import Game
-from TSP.NeuralNet import NeuralNet as nn
+from TSPGame import Game
+from NeuralNet import NeuralNet as nn
 from utils import *
 import numpy as np
 
@@ -22,9 +22,9 @@ args = dotdict({
     'arenaCompare': 10,         # Number of games to play during arena play to determine if new net will be accepted.
     'cpuct': 1,
     'load_coordinates': False,
-    'checkpoint': 'TSP/temp',
+    'checkpoint': '../data/temp',
     'load_model': False,
-    'load_folder_file': ('TSP/models','best.pth.tar'),
+    'load_folder_file': ('../data/models','best.pth.tar'),
     'numItersForTrainExamplesHistory': 20,
 
 })
@@ -33,10 +33,10 @@ def main():
     log.info('Loading %s...', Game.__name__)
     n = args.n
     if args.load_coordinates:
-        coordinates = np.load('TSP/output/coordinates.npy')
+        coordinates = np.load('../data/output/coordinates.npy')
     else:
         coordinates = np.array([list((np.random.random_sample(2)-0.5)) for j in range(n)])
-        np.save('TSP/output/coordinates.npy', coordinates)
+        np.save('../data/output/coordinates.npy', coordinates)
     g = Game(n, coordinates)
 
     log.info('Loading %s...', nn.__name__)

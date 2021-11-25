@@ -1,4 +1,4 @@
-from .TSPLogic import Board
+from TSPLogic import Board
 import numpy as np
 
 class Game():

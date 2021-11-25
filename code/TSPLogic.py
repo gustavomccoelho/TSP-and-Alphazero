@@ -99,7 +99,7 @@ class Board():
                  marker='o', markerfacecolor='red', markersize=12)
         ax1.title.set_text('PLAYER 1')
         ax2.title.set_text('PLAYER 2')
-        plt.savefig('TSP/output/game_' + str(iteration) + '_secounds_result_' + str(gameResult) + '_random_' + str(random) + '.jpg')
+        plt.savefig('..data/output/game_' + str(iteration) + '_result_' + str(gameResult) + '_random_' + str(random) + '.jpg')
         
     def get_score(self, board, player):
         count = 0
