@@ -1,20 +1,19 @@
 import logging
-
 import coloredlogs
+import numpy as np
 
 from Coach import Coach
 from TSPGame import Game
 from NeuralNet import NeuralNet as nn
 from utils import *
-import numpy as np
 
 log = logging.getLogger(__name__)
 coloredlogs.install(level='INFO')  # Change this to DEBUG to see more info.
 
 args = dotdict({
-    'n': 10,
-    'numIters': 100,
-    'numEps': 30,              # Number of complete self-play games to simulate during a new iteration.
+    'n': 15,
+    'numIters': 10,
+    'numEps': 10,              # Number of complete self-play games to simulate during a new iteration.
     'tempThreshold': 15,        #
     'updateThreshold': 0.6,     # During arena playoff, new neural net will be accepted if threshold or more of games are won.
     'maxlenOfQueue': 200000,    # Number of game examples to train the neural networks.
@@ -26,7 +25,6 @@ args = dotdict({
     'load_model': False,
     'load_folder_file': ('../data/models','best.pth.tar'),
     'numItersForTrainExamplesHistory': 20,
-
 })
 
 def main():
@@ -57,7 +55,6 @@ def main():
 
     log.info('Starting the learning process 🎉')
     c.learn()
-
 
 if __name__ == "__main__":
     main()

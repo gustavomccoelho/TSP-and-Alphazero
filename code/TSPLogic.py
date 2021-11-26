@@ -99,7 +99,7 @@ class Board():
                  marker='o', markerfacecolor='red', markersize=12)
         ax1.title.set_text('PLAYER 1')
         ax2.title.set_text('PLAYER 2')
-        plt.savefig('..data/output/game_' + str(iteration) + '_result_' + str(gameResult) + '_random_' + str(random) + '.jpg')
+        plt.savefig('../data/output/game_' + str(iteration) + '_result_' + str(gameResult) + '_random_' + str(random) + '.jpg')
         
     def get_score(self, board, player):
         count = 0
@@ -122,9 +122,11 @@ class Board():
                                         if board[k][i] == 0 and board[l][j] == 0:                                           
                                             validMoves[i, j, k, l] = 1
 
-            return validMoves.flatten()
+            return np.append(validMoves.flatten(), 1)
             
     def play_move(self, board, player, move):
+        if move == self.n**4:
+            return board
         zeros = np.zeros(self.n**4)
         zeros[move] = 1
         move = zeros[:]

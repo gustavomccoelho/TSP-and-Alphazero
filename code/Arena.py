@@ -109,7 +109,7 @@ class Arena():
                 draws += 1
 
         self.game.board.plot_board(self.game.board.pieces, self.iteration, gameResult, random = False)
-        np.save('TSP/output/board_Random_False_' + str(self.iteration), np.array(self.game.board.pieces))
+        np.save('../data/output/board_Random_False_' + str(self.iteration), np.array(self.game.board.pieces))
         plt.close()
 
         start = time.time()
@@ -124,7 +124,7 @@ class Arena():
 
         interval = end-start
         self.game.board.plot_board(self.game.board.pieces, self.iteration, gameResult, random = True)
-        np.save('TSP/output/board_Random_True_' + str(self.iteration), np.array(self.game.board.pieces))
+        np.save('../data/output/board_Random_True_' + str(self.iteration), np.array(self.game.board.pieces))
 
         #cost = round(-self.game.board.get_score(self.game.board.pieces, 1), 2)
 

@@ -39,7 +39,7 @@ class Game():
             actionSize: number of all possible actions
         """
         
-        return self.n**4
+        return self.n**4 + 1
 
     def getNextState(self, board, player, action):
         """
@@ -52,7 +52,7 @@ class Game():
             nextBoard: board after applying action
             nextPlayer: player who plays in the next turn (should be -player)
         """
-        
+
         nextBoard = self.board.play_move(board, player, action)
         nextPlayer = -player
         
@@ -84,10 +84,10 @@ class Game():
                
         """
         if self.board.is_done(round):
-        	if self.board.get_score(board, player) > self.board.get_score(board, -player):
-        		return 1
-        	else:
-        		return -1
+            if self.board.get_score(board, player) > self.board.get_score(board, -player):
+                return 1
+            else:
+                return -1
         
         else: return 0
 
@@ -118,7 +118,7 @@ class Game():
                        form of the board and the corresponding pi vector. This
                        is used when training the neural network from examples.
         """
-        pi_board = np.reshape(pi[:], (self.n, self.n, self.n, self.n))
+        pi_board = np.reshape(pi[:-1], (self.n, self.n, self.n, self.n))
         l = []
 
         for i in range(1, 5):
